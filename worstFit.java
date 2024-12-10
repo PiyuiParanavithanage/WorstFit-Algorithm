@@ -2,26 +2,26 @@ import java.util.Scanner;
 
 public class worstFit {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
+        Scanner sc = new Scanner(System.in);
+ 
         // Input number of memory blocks
         System.out.print("Enter the number of memory blocks: ");
-        int numBlocks = scanner.nextInt();
+        int numBlocks = sc.nextInt();
         int[] blockSizes = new int[numBlocks];
 
         System.out.println("Enter the sizes of memory blocks: ");
         for (int i = 0; i < numBlocks; i++) {
-            blockSizes[i] = scanner.nextInt();
+            blockSizes[i] = sc.nextInt();
         }
 
         // Input number of processes
         System.out.print("Enter the number of processes: ");
-        int numProcesses = scanner.nextInt();
+        int numProcesses = sc.nextInt();
         int[] processSizes = new int[numProcesses];
 
         System.out.println("Enter the sizes of processes: ");
         for (int i = 0; i < numProcesses; i++) {
-            processSizes[i] = scanner.nextInt();
+            processSizes[i] = sc.nextInt();
         }
 
         // Array to store allocation details (-1 indicates not allocated)
@@ -61,6 +61,6 @@ public class worstFit {
             }
         }
 
-        scanner.close();
+        sc.close();
     }
 }
