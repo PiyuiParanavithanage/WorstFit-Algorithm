@@ -2,25 +2,34 @@ import java.util.Scanner;
 
 public class worstFit {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
- 
-        // Input number of memory blocks
-        System.out.print("Enter the number of memory blocks: ");
-        int numBlocks = sc.nextInt();
-        int[] blockSizes = new int[numBlocks];
 
-        System.out.println("Enter the sizes of memory blocks: ");
+        System.out.print("\n========== WORSTFIT MEMORY ALLOCATION ALGORITHM==========");
+
+        Scanner sc = new Scanner(System.in);
+
+        // Take the number of blocks as input
+        System.out.print("\n\nEnter the number of Blocks: ");
+        int numBlocks = sc.nextInt();
+
+        // Take the size of each block
+        int[] blockSizes = new int[numBlocks];
+        int[] originalBlockSizes = new int[numBlocks]; // To store original block sizes for later display
+        System.out.println("\n======== Enter the sizes of Blocks ========");
         for (int i = 0; i < numBlocks; i++) {
+            System.out.print("Block Number " + (i + 1) + ": ");
             blockSizes[i] = sc.nextInt();
+            originalBlockSizes[i] = blockSizes[i]; // Store original block sizes
         }
 
-        // Input number of processes
-        System.out.print("Enter the number of processes: ");
+        // Take the number of processes
+        System.out.print("\nEnter the number of Jobs(Processes): ");
         int numProcesses = sc.nextInt();
-        int[] processSizes = new int[numProcesses];
 
-        System.out.println("Enter the sizes of processes: ");
+        // Take the size of each process
+        int[] processSizes = new int[numProcesses];
+        System.out.println("\n======== Enter the sizes of Jobs(Processes) ========");
         for (int i = 0; i < numProcesses; i++) {
+            System.out.print("Process Number " + (i + 1) + ": ");
             processSizes[i] = sc.nextInt();
         }
 
@@ -50,15 +59,22 @@ public class worstFit {
         }
 
         // Display allocation results
-        System.out.println("\nProcess Allocation Results:");
-        System.out.println("Process No.\tProcess Size\tBlock No.");
+        System.out.println("\n\n ======== Process Allocation Results ========");
+        System.out.println("Process Number\t\tProcess Size\t\tBlock Number");
         for (int i = 0; i < numProcesses; i++) {
-            System.out.print((i + 1) + "\t\t" + processSizes[i] + "\t\t");
+            System.out.print((i + 1) + "\t\t\t" + processSizes[i] + "\t\t\t");
             if (allocation[i] != -1) {
                 System.out.println(allocation[i] + 1); // Block index (1-based)
             } else {
-                System.out.println("Not Allocated");
+                System.out.println("Not Allocated for a Block");
             }
+        }
+
+        // Display remaining block space after all allocations
+        System.out.println("\n======== Remaining Block Sizes ========");
+        for (int i = 0; i < numBlocks; i++) {
+            System.out.println("Block " + (i + 1) + " \tOriginal Block Size: " + originalBlockSizes[i] +
+                    ", \tRemaining Block Space: " + blockSizes[i]);
         }
 
         sc.close();
